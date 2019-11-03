@@ -1,16 +1,34 @@
 #include "application.hpp"
 
-faucet::application::application() : running(true)
-{
-    #ifndef FAUCET_HEADLESS
-        if (SDL_Init(SDL_INIT_EVERYTHING) < 0) throw SDL_GetError();
-        //window_ptr = SDL_CreateWindow("")
+using namespace faucet;
 
-    #endif
+application::application() : running(true)
+{
+    
 }
 
-faucet::application::~application()
+application::~application()
 {
     delete scene_ptr;
-    SDL_Quit();
+    delete window_ptr;
+}
+
+void application::load_scene(scene* s)
+{
+    (scene_ptr = s)->on_load();
+}
+
+scene* application::get_scene()
+{
+    return scene_ptr;
+}
+
+void application::load_window(window* w)
+{
+    window_ptr = w;
+}
+
+window* application::get_window()
+{
+    return window_ptr;
 }
