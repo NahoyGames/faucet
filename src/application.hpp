@@ -1,13 +1,25 @@
 #pragma once
 
+#include "scene.hpp"
+#include "../libs/SDL2/include/SDL.h"
+
 namespace faucet
 {
     class application
     {
-        virtual void on_start();
+    public:
+        application(); // Start the application
+        ~application(); // Quit the application
 
-        virtual void on_update(int delta);
+        void pause(); // Pause the application loop
+        void unpause(); // Unpause the application loop
+        
+        void load_scene(scene& s); // Load a scene
+        scene* get_scene(); // Get the current scene
+    private:
+        scene* scene_ptr; // Loaded scene
+        SDL_Window* window_ptr; // Application window
 
-        virtual void on_quit();
+        bool running; // Should the game loop run?
     };
 } // namespace faucet
