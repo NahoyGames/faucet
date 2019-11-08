@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../libs/SDL2/include/SDL.h"
+#include <SDL2/SDL.h>
 
 namespace faucet
 {
