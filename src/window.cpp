@@ -2,6 +2,7 @@
 
 faucet::window::window(const char* name, const int w, const int h)
 {
+    // ------- SDL -------- //
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) throw SDL_GetError();
 
     sdl_win = SDL_CreateWindow(
@@ -12,6 +13,9 @@ faucet::window::window(const char* name, const int w, const int h)
     );
 
     if (!sdl_win) throw SDL_GetError();
+    
+
+    // ------ BGFX ------- //
 }
 
 faucet::window::~window()
